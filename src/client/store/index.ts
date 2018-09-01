@@ -3,7 +3,7 @@ import { compose, createStore, applyMiddleware, Store, Middleware } from 'redux'
 import { reducer } from '../reducers';
 import { asyncMiddleware } from '../model/middleware';
 
-export function configureStore (initStore: {} = {}) {
+export function configureStore (initStore: {} = { items: [] }) {
   let composeEnhancers = compose;
   const enhancers: any[] = [];
   const middleware: Middleware[] = [

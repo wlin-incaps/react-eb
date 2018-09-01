@@ -3,7 +3,7 @@ version: '2'
 services:
   app:
     image: node:8.6
-    container_name: typescript-react-express
+    container_name: react-eb
     volumes:
       - .:/app
     entrypoint:

@@ -4,7 +4,7 @@ var redux_1 = require("redux");
 var reducers_1 = require("../reducers");
 var middleware_1 = require("../model/middleware");
 function configureStore(initStore) {
-    if (initStore === void 0) { initStore = {}; }
+    if (initStore === void 0) { initStore = { items: [] }; }
     var composeEnhancers = redux_1.compose;
     var enhancers = [];
     var middleware = [
