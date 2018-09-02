@@ -17,8 +17,10 @@
     "prebuild": "npm run clear",
     "prestart": "npm run clear",
     "tslint": "tslint -c ./tslint.json './src/**/*.{ts,tsx}'",
-    "docker:run": "docker-compose up -d",
-    "docker:stop": "docker-compose stop",
+    "docker:compose": "docker-compose up -d",
+    "docker:decompose": "docker-compose stop",
+    "docker:run": "docker build -t react-eb . && docker run -d -p 3000:3000 -p 5858:5858 -p 9229:9229 --name react-eb react-eb",
+    "docker:stop": "docker stop react-eb && docker rm react-eb",
     "docker:exec": "docker exec -it react-eb bash"
   },
   "devDependencies": {
