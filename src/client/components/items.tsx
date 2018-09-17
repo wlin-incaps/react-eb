@@ -11,8 +11,8 @@ class Items extends React.Component<any, any> {
     return store.dispatch(fetchUsers());
   }
 
-  public constructor () {
-    super();
+  public constructor (props: any) {
+    super(props);
     this.renderItems = this.renderItems.bind(this);
   }
 
