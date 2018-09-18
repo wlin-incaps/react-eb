@@ -15,3 +15,7 @@ services:
     command: -s
     working_dir: /app
     tty: true
+  db:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
