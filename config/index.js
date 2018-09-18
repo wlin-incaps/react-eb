@@ -3,7 +3,7 @@
 const path = require('path');
 
 function config (environment = 'production') {
-  const SRC_FOLDER = path.resolve(__dirname, '..', 'packages');
+  const SRC_FOLDER = path.resolve(__dirname, '..', 'src');
 
   return {
     PORT: parseInt(process.env.PORT, 10) || 3000,

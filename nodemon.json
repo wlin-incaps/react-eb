@@ -6,7 +6,7 @@
     "public"
   ],
   "watch": [
-    "packages/server/**/*.{ts,tsx}",
+    "src/server/**/*.{ts,tsx}",
     "config",
     "webpack"
   ],
