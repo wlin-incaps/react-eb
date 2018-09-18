@@ -6,7 +6,7 @@
     "public"
   ],
   "watch": [
-    "src/server/**/*.{ts,tsx}",
+    "packages/server/**/*.{ts,tsx}",
     "config",
     "webpack"
   ],
@@ -14,5 +14,5 @@
     "NODE_ENV": "development"
   },
   "ext": "js json ts tsx",
-  "exec": "ts-node --inspect src/server/index.ts"
+  "exec": "ts-node --inspect packages/server/src/index.ts"
 }

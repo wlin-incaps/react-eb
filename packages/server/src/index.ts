@@ -13,7 +13,7 @@ global.__SERVER__ = true;
 global.__DEV__ = isDevelopment;
 global.__TEST__ = false;
 
-const config = require('../../config')(process.env.NODE_ENV);
+const config = require('../../../config')(process.env.NODE_ENV);
 const app = express();
 
 if (isDevelopment) {
