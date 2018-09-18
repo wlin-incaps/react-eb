@@ -1,27 +1,27 @@
-import { RouteConfig } from 'react-router-config';
+import { RouteConfig } from "react-router-config";
 
-import Root from './root';
-import Items from './components/items';
-import NotFound from './components/notFound';
-import Home from './components/home';
+import Home from "./components/home";
+import Items from "./components/items";
+import NotFound from "./components/notFound";
+import Root from "./root";
 
 export const routes: RouteConfig[] = [
   {
     component: Root,
     routes: [
       {
-        path: '/',
+        path: "/",
         exact: true,
-        component: Home
+        component: Home,
       },
       {
-        path: '/items',
-        component: Items
+        path: "/items",
+        component: Items,
       },
       {
-        path: '*',
-        component: NotFound
-      }
-    ]
-  }
+        path: "*",
+        component: NotFound,
+      },
+    ],
+  },
 ];

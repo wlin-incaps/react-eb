@@ -54,7 +54,7 @@ $ npm run tslint
 ## Explanation
 
 ### Client side
-The client side entry point is reasonably named client/index.ts. All it does is load the routes, initiate react-router, rehydrate the redux state from the `window.__PRELOADED_STATE__` passed in from the server, and render the page over top of the server-rendered DOM. This makes React enable all its event listeners without having to re-render the DOM.
+The client side entry point is reasonably named client/reducers.ts. All it does is load the routes, initiate react-router, rehydrate the redux state from the `window.__PRELOADED_STATE__` passed in from the server, and render the page over top of the server-rendered DOM. This makes React enable all its event listeners without having to re-render the DOM.
 
 ### Server-side Data Fetching
 ...

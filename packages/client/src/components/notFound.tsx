@@ -1,15 +1,15 @@
-import * as React from 'react';
-import { Route } from 'react-router-dom';
-import Helmet from 'react-helmet';
+import * as React from "react";
+import Helmet from "react-helmet";
+import { Route } from "react-router-dom";
 
-function NotFound ({ staticContext }) {
+function NotFound({ staticContext }) {
   // will be available only on the server
   if (staticContext) {
     staticContext.status = 404;
   }
-  const title = 'Page Not Found';
+  const title = "Page Not Found";
   const meta = [
-    { name: 'description', content: 'A page to say hello asynchronously' },
+    { name: "description", content: "A page to say hello asynchronously" },
   ];
 
   return (
@@ -20,7 +20,7 @@ function NotFound ({ staticContext }) {
   );
 }
 
-export function NotFoundRoute () {
+export function NotFoundRoute() {
   return (
     <Route component={NotFound} />
   );
