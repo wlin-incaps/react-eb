@@ -16,7 +16,7 @@
     "clear": "rimraf dist public",
     "prebuild": "npm run clear",
     "prestart": "npm run clear",
-    "tslint": "tslint -c ./tslint.json './packages/**/*.{ts,tsx}'",
+    "tslint": "tslint -c ./tslint.json './src/**/*.{ts,tsx}'",
     "docker:compose": "docker-compose up -d",
     "docker:decompose": "docker-compose stop",
     "docker:run": "docker build -t react-eb . && docker run -d -p 3000:3000 -p 5858:5858 -p 9229:9229 --name react-eb react-eb",

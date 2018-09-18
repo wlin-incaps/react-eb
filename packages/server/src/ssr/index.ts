@@ -11,7 +11,7 @@ const existsP = util.promisify(fs.exists);
 import { Html, DOCTYPE } from './html';
 import { IComponentConfig } from './component';
 
-const config = require('../../../config')(process.env.NODE_ENV);
+const config = require('../../../../config')(process.env.NODE_ENV);
 
 import 'isomorphic-fetch';
 
