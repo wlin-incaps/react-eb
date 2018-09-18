@@ -1,13 +1,18 @@
 {
-  "extends": [ "tslint:latest", "tslint-react" ],
+  "defaultSeverity": "error",
+  "extends": ["tslint-react", "tslint:latest"],
+  "jsRules": {},
   "rules": {
-    "quotemark": [ true, "single" ],
-    "space-before-function-paren": true,
-    "ordered-imports": false,
-    "trailing-comma": false,
+    "no-implicit-dependencies": false,
+    "quotemark": [true, "double"],
+    "semicolon": [true, "always"],
+    "interface-name": [true, "never-prefix"],
+    "object-literal-sort-keys": false,
+    "no-empty-interface": false,
+    "interface-name": false,
     "no-var-requires": false,
     "no-console": false,
-    "no-implicit-dependencies": false,
     "no-submodule-imports": false
-  }
+  },
+  "rulesDirectory": []
 }

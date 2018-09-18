@@ -1,35 +1,35 @@
-import * as React from 'react';
-import { Store, bindActionCreators} from 'redux';
-import * as ReactRedux from 'react-redux';
-import * as reactRouter from 'react-router';
-import Helmet from 'react-helmet';
+import * as React from "react";
+import Helmet from "react-helmet";
+import * as ReactRedux from "react-redux";
+import * as reactRouter from "react-router";
+import { bindActionCreators, Store} from "redux";
 
-import { fetchUsers } from '../reducers';
+import { fetchUsers } from "../reducers/reducers";
 
 class Items extends React.Component<any, any> {
-  public static fetchData (store: Store<any>, match: reactRouter.match<any>) {
+  public static fetchData(store: Store<any>, match: reactRouter.match<any>) {
     return store.dispatch(fetchUsers());
   }
 
-  public constructor (props: any) {
+  public constructor(props: any) {
     super(props);
     this.renderItems = this.renderItems.bind(this);
   }
 
-  public componentDidMount () {
+  public componentDidMount() {
     this.props.fetchUsers();
   }
 
-  public render () {
+  public render() {
     return (
       <div>
-        <Helmet title='Items' />
+        <Helmet title="Items" />
         {this.props.items.map(this.renderItems)}
       </div>
     );
   }
 
-  private renderItems (item) {
+  private renderItems(item) {
     return (
       <div key={item.id} >
         <span>{item.name}</span>

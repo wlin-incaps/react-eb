@@ -1,12 +1,12 @@
-import * as React from 'react';
-import * as _ from 'lodash';
-import { Store } from 'redux';
-import { Provider } from 'react-redux';
-import { StaticRouter } from 'react-router';
-import { renderRoutes, matchRoutes } from 'react-router-config';
+import * as _ from "lodash";
+import * as React from "react";
+import { Provider } from "react-redux";
+import { StaticRouter } from "react-router";
+import { matchRoutes, renderRoutes } from "react-router-config";
+import { Store } from "redux";
 
-import { routes } from '../../client/router';
-import { configureStore } from '../../client/store';
+import { routes } from "../../../client/src/router";
+import { configureStore } from "../../../client/src/store/store";
 
 export interface IComponentConfig {
   store: Store<any>;
@@ -23,7 +23,7 @@ interface IComponentProps {
   config: IComponentConfig;
 }
 
-export function Component ({ config }: IComponentProps) {
+export function Component({ config }: IComponentProps) {
   return (
     <Provider store={config.store}>
       <StaticRouter
@@ -36,15 +36,15 @@ export function Component ({ config }: IComponentProps) {
   );
 }
 
-export function getStore (): Store<any> {
+export function getStore(): Store<any> {
   return configureStore();
 }
 
-export function fetchData (url: string, store: Store<any>) {
+export function fetchData(url: string, store: Store<any>) {
   const branch = matchRoutes(routes, url);
 
   const promises = branch.map(({ route, match }) => {
-    const fetchDataPromise = _.get(route, 'component.fetchData');
+    const fetchDataPromise = _.get(route, "component.fetchData");
 
     return fetchDataPromise instanceof Function
       ? fetchDataPromise(store, match)

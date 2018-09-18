@@ -1,27 +1,27 @@
-import * as express from 'express';
-import * as path from 'path';
-import * as fs from 'fs';
-import * as util from 'util';
-import * as React from 'react';
-import * as _ from 'lodash';
-import { renderToString } from 'react-dom/server';
+import * as express from "express";
+import * as fs from "fs";
+import * as _ from "lodash";
+import * as path from "path";
+import * as React from "react";
+import { renderToString } from "react-dom/server";
+import * as util from "util";
 
 const existsP = util.promisify(fs.exists);
 
-import { Html, DOCTYPE } from './html';
-import { IComponentConfig } from './component';
+import { IComponentConfig } from "./component";
+import { DOCTYPE, Html } from "./html";
 
-const config = require('../../../../config')(process.env.NODE_ENV);
+const config = require("../../../../config")(process.env.NODE_ENV);
 
-import 'isomorphic-fetch';
+import "isomorphic-fetch";
 
-function getAssets (res: express.Response) {
-  if (process.env.NODE_ENV === 'development' && res.locals.webpackStats) {
+function getAssets(res: express.Response) {
+  if (process.env.NODE_ENV === "development" && res.locals.webpackStats) {
     const assets = res.locals.webpackStats.toJson().assetsByChunkName;
     return Promise.resolve(assets);
   }
 
-  const assetsPath = path.join(config.PUBLIC_FOLDER, 'manifest.json');
+  const assetsPath = path.join(config.PUBLIC_FOLDER, "manifest.json");
 
   return existsP(assetsPath)
     .then((exists) => {
@@ -34,20 +34,20 @@ function getAssets (res: express.Response) {
     });
 }
 
-export default function serverSideRender (req: express.Request, res: express.Response, next: express.NextFunction) {
-  const { Component, getStore, fetchData } = require('./component');
-  const navigator = { userAgent: req.headers['user-agent'] };
+export function serverSideRender(req: express.Request, res: express.Response, next: express.NextFunction) {
+  const { Component, getStore, fetchData } = require("./component");
+  const navigator = { userAgent: req.headers["user-agent"] };
   const componentConfig: IComponentConfig = {
     routerContext: {},
     store: getStore(),
-    locationUrl: req.url
+    locationUrl: req.url,
   };
 
   Promise.all(fetchData(req.url, componentConfig.store))
     .then(() => getAssets(res))
     .then((assets) => {
       const template = renderToString(React.createElement(Component, {
-        config: componentConfig
+        config: componentConfig,
       }));
 
       if (componentConfig.routerContext.status === 404) {
@@ -60,13 +60,13 @@ export default function serverSideRender (req: express.Request, res: express.Res
       }
 
       res.send(
-        DOCTYPE + '\n' +
+        DOCTYPE + "\n" +
         renderToString(React.createElement(Html, {
           assets,
           content: template,
           publicPath: config.PUBLIC_PATH,
           store: componentConfig.store,
-        }))
+        })),
       );
 
     })

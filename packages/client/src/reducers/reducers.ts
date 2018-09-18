@@ -1,12 +1,12 @@
-import * as _ from 'lodash';
-import { ActionCreator } from 'redux';
+import * as _ from "lodash";
+import { ActionCreator } from "redux";
 
-const USERS_LOADED = '@ssr/users/loaded';
+const USERS_LOADED = "@ssr/users/loaded";
 const initialState = {
-  items: []
+  items: [],
 };
 
-export function reducer (state = initialState, action) {
+export function reducer(state = initialState, action) {
   switch (action.type) {
     case USERS_LOADED:
       return _.assign({}, state, { items: action.items });
@@ -17,12 +17,12 @@ export function reducer (state = initialState, action) {
 }
 
 export const fetchUsers: any = () => (dispatch) => {
-  return fetch('//jsonplaceholder.typicode.com/users')
+  return fetch("//jsonplaceholder.typicode.com/users")
     .then((res) => res.json())
     .then((users) => {
       dispatch({
         type: USERS_LOADED,
-        items: users
+        items: users,
       });
     });
 };
